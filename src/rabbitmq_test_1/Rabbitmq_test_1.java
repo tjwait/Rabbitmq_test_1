@@ -38,11 +38,11 @@ public class Rabbitmq_test_1 {
         String message_unlock = "{\"devid\" : \"shangbaotest1\" , \"cmdid\" : \"Unlock\" }";
         String message_unlock_closed = "{\"devid\" : \"shangbaotest1\" , \"cmdid\" : \"Unlock_Close\" }";
         String message_locker_state = "{\"devid\" : \"shangbaotest1\" , \"cmdid\" : \"Locker_State\" }";
-        String message_set_bv = "{\"devid\" : \"shangbaotest1\" , \"cmdid\" : \"Basic_Value\" , \"BN\" : \"0001\" }";//设置指定称编号称重板去皮值
+        String message_set_bv = "{\"devid\" : \"shangbaotest1\" , \"cmdid\" : \"Basic_Value\" , \"BN\" : \"0003\" }";//设置指定称编号称重板去皮值
         //String message_set_cur = "{\"devid\" : \"shangbaotest1\" , \"cmdid\" : \"Curavture_Value\" , \"BN\" : \"0003\", \"Weight\" : \"2000\" , \"Check_Tem\" : \"0\" , \"Save\" : \"1\" }";//设置指定称编号称重板曲率值
-        String message_set_cur = "{\"devid\" : \"shangbaotest1\" , \"cmdid\" : \"Curavture_Value\" , \"BN\" : \"0002\", \"Weight\" : \"5950\" , \"Save\" : \"1\" }";//设置指定称编号称重板曲率值
+        String message_set_cur = "{\"devid\" : \"shangbaotest1\" , \"cmdid\" : \"Curavture_Value\" , \"BN\" : \"0003\", \"Weight\" : \"2000\" , \"Save\" : \"1\" }";//设置指定称编号称重板曲率值
         String message_get_board_state = "{\"devid\" : \"shangbaotest1\" , \"cmdid\" : \"Board_State\" }";
-        String message_get_wei = "{\"devid\" : \"shangbaotest1\" , \"cmdid\" : \"Weight_Value\" , \"Data\":[ \"0001\", \"0002\" ] }";
+        String message_get_wei = "{\"devid\" : \"shangbaotest1\" , \"cmdid\" : \"Weight_Value\" , \"Data\":[ \"0001\", \"0002\" , \"0003\" ] }";
         String message_shopping = "{\"devid\" : \"shangbaotest1\" , \"cmdid\" : \"Shopping\" , \"Data\":[\"0001\", \"0002\"] }";
         //以上命令为新版命令
         
@@ -69,7 +69,7 @@ public class Rabbitmq_test_1 {
         
         //String message_onshelf = toUTF8("{\"devid\":\"shangbaotest1\",\"cmdid\":\"OnShelf\",\"Data\":[[\"item1\",\"02020304\",\"0003\",\"可乐可乐可乐\",\"可口阿道夫\",\"1\",\"0\",\"0\",\"0\",\"500\",\"1.7\"]]}");
         //message_onshelf = new String(message_onshelf.getBytes(),"UTF8");
-        channel.basicPublish("amq.topic", "shangbaotest1", null, message_unlock.getBytes());
+        channel.basicPublish("amq.topic", "shangbaotest1", null, message_get_wei.getBytes());
             
         System.out.println(" [x] Sent " /*+ message*/ );
         channel.close();
